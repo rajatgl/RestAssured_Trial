@@ -32,7 +32,7 @@ public class EmployeeServiceTest {
         Employee[] empArray = getEmployeeList();
         EmployeeService payrollservice = new EmployeeService(Arrays.asList(empArray));
         int entries = payrollservice.countEntries();
-        assertEquals(5, entries);
+        assertEquals(6, entries);
     }
 
     public Response addEmployee(Employee employee) {
@@ -45,11 +45,11 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void givennewPayrollRecord_whenAdded_shouldreturn201statusCode() {
+    public void givenNewPayrollRecord_whenAdded_shouldReturn201statusCode() {
         Employee[] empArray = getEmployeeList();
         EmployeeService employeeService = new EmployeeService(Arrays.asList(empArray));
 
-        Employee employee = new Employee("Rajat G.L",50000.00,"M");
+        Employee employee = new Employee("Rajat",50000.00,"M");
 
         Response response = addEmployee(employee);
         System.out.println(response.asString());
@@ -59,7 +59,7 @@ public class EmployeeServiceTest {
         employee = new Gson().fromJson(response.asString(), Employee.class);
         employeeService.addEntryIntoPayroll(employee);
         int entries = employeeService.countEntries();
-        assertEquals(5, entries);
+        assertEquals(6, entries);
 
     }
 }
